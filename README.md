@@ -1,3 +1,5 @@
+Note: This fork allows overriding the timeout value
+
 RabbitMQ Queue driver for Laravel
 ======================
 [![Latest Stable Version](https://poser.pugx.org/vladimir-yuldashev/laravel-queue-rabbitmq/v/stable?format=flat-square)](https://packagist.org/packages/vladimir-yuldashev/laravel-queue-rabbitmq)

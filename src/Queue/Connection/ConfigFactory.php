@@ -35,6 +35,8 @@ class ConfigFactory
                 self::getSLLOptionsFromConfig($connectionConfig, $config);
             }
 
+            self::getTimeoutFromConfig($connectionConfig, $config);
+
             self::getHostFromConfig($connectionConfig, $config);
             self::getHeartbeatFromConfig($connectionConfig, $config);
             self::getNetworkProtocolFromConfig($connectionConfig, $config);
@@ -90,6 +92,15 @@ class ConfigFactory
 
         if (is_numeric($heartbeat) && intval($heartbeat) > 0) {
             $connectionConfig->setHeartbeat((int) $heartbeat);
+        }
+    }
+
+    protected static function getTimeoutFromConfig(AMQPConnectionConfig $connectionConfig, array $config): void
+    {
+        $timeout = Arr::get($config, self::CONFIG_OPTIONS.'.timeout');
+
+        if (is_numeric($timeout) && intval($timeout) > 0) {
+            $connectionConfig->setConnectionTimeout((int) $timeout);
         }
     }
 
